@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/layout :: head"></head>
+<body>
+
+<div class="page">
+    <nav th:replace="/fragments/layout :: navBar"></nav>
+    <div class="page-body">
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+        <section th:replace="/organization/index :: noticias"></section>
+    </div>
+    <footer th:replace="/fragments/layout :: footer"></footer>
+</div>
+
+</body>
+
+</html>

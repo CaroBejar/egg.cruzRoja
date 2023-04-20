@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <title>dashboard</title>
+</head>
+<body>
+    <div class="admin-panel clearfix">
+        <div class="slidebar">
+          <div class="logo">
+            <a href=""><img src="https://static.wixstatic.com/media/2cd43b_5f099d303fb742dfb10d3892386e0eb6~mv2.png/v1/fill/w_320,h_322,q_90/2cd43b_5f099d303fb742dfb10d3892386e0eb6~mv2.png"></a>
+          </div>
+            <input id="tempDivName" type="hidden"/>
+          <ul>
+            <li><a href="#dashboard" id="targeted"><strong>admin</strong></a></li> <!--nombre administrador-->
+            <li><a href="/inicio">Inicio</a></li>
+            <li><a href="#myDiv1" OnClick="MyFunction('myDiv1');">Usuarios</a></li>
+            <li><a href="#myDiv2" OnClick="MyFunction('myDiv2');">Organizaciones</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+          </ul>
+        </div>
+        <div class="main">
+          <ul class="topbar clearfix">
+            <h2><ion-icon name="paw"></ion-icon>Cruz Azul</h2> 
+          </ul>
+          <div class="mainContent clearfix">
+            <div id="dashboard">
+              <h2 class="header"><span class="icon"></span>Dashboard</h2>
+                <!--<div class="monitor">
+                  <h4>Right Now</h4>
+                  <div class="clearfix">
+                    <ul class="content">
+                      <li>content</li>
+                      <li class="posts"><span class="count">179</span><a href="">posts</a></li>
+                      <li class="pages"><span class="count">13</span><a href="">pages</a></li>
+                      <li class="categories"><span class="count">21</span><a href="">categories</a></li>
+                      <li class="tags"><span class="count">305</span><a href="">tags</a></li>
+                    </ul>
+                    <ul class="discussions">
+                      <li>discussions</li>
+                      <li class="comments"><span class="count">353</span><a href="">comments</a></li>
+                      <li class="approved"><span class="count">319</span><a href="">approved</a></li>
+                      <li class="pending"><span class="count">0</span><a href="">pending</a></li>
+                      <li class="spam"><span class="count">34</span><a href="">spam</a></li>
+                   </ul>
+                 </div>
+                 <p>Theme <a href="">Twenty Eleven</a> with <a href="">3 widgets</a></p>
+               </div>
+               <div class="quick-press">
+                 <h4>Quick Press</h4>
+                 <form action="" method="post">
+                   <input type="text" name="title" placeholder="Title"/>
+                   <input type="text" name="content" placeholder="Content"/>
+                   <input type="text" name="tags" placeholder="Tags"/>
+                   <button type="button" class="save">l</button>
+                   <button type="button" class="delet">m</button>
+                   <button type="submit" class="submit" name="submit">Publish</button>
+                 </form>
+               </div>-->
+             </div>
+             <div id="myDiv1">
+               <h2 class="header">Lista de usuarios</h2>
+               <table>
+                <thead>                  
+                  <th scope="col"></th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">ROL</th>
+                  <th scope="col">email</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody th:each="user : ${users}" class="tbody"> 
+                  <tr>
+                    <td><a><img th:if="${user.image != null}" class="logo" th:src="@{/imagen/perfil/__${user.id}__}" ></a></td>
+                    <td th:text="${user.name}">nombre</td>
+                    <td th:text="${user.rol}">rol</td>
+                    <td th:text="${user.email}">usuario@gmail.com</td>
+                      <td>
+                          <a th:href="@{/usuario/modificar/__${user.id}__}"><ion-icon name="create-outline"></ion-icon></a>
+                      </td>
+                      <td>
+                          <a th:href="@{/usuario/eliminar/__${user.id}__}"><ion-icon name="trash-outline"></ion-icon></a>
+                      </td>
+                  </tr>                           
+                </tbody>
+              </table>
+             </div>
+             <div id="myDiv2">
+               <h2 class="header">Lista de organizaciones</h2>
+                 <table class="order-table">
+                     <thead>
+                     <tr>
+                         <th scope="col"></th>
+                         <th scope="col">Nombre</th>
+                         <th scope="col">TIPO</th>
+                         <th scope="col">Ubicación</th>
+                         <th scope="col">email</th>
+                         <th scope="col">Telefono</th>
+                         <th scope="col">Fecha agregado</th>
+                         <th scope="col">Fecha modificado</th>
+                         <th scope="col"></th>
+                         <th scope="col"></th>
+                     </tr>
+                     </thead>
+                     <tbody th:each="organization : ${organizations}" class="tbody">
+                     <tr>
+                         <td>
+                             <a>
+                                 <ion-icon name="paw-outline"></ion-icon>
+                             </a>
+                         </td>
+                         <td th:text="${organization.name}"><strong>CAROL</strong></td>
+                         <td th:text="${organization.type}">aca va el rol</td>
+                         <td th:text="${organization.location}">aca la ubicacion</td>
+                         <td th:text="${organization.email}">esto tendria que ser mas largo email</td>
+                         <td th:text="${organization.phone}">telefono</td>
+                         <td th:text="${organization.uploadDate}"></td>
+                         <td th:text="${organization.modificationDate}"></td>
+                         <td>
+                             <a th:href="@{/organizacion/modificar/__${organization.id}__}">
+                                 <ion-icon name="create-outline"></ion-icon>
+                             </a>
+                         </td>
+                         <td>
+                             <a th:href="@{/organizacion/eliminar/__${organization.id}__}">
+                                 <ion-icon name="trash-outline"></ion-icon>
+                             </a>
+                         </td>
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>             
+           </div>
+           <ul class="statusbar">
+             <li><a href="">
+              <ion-icon name="logo-facebook"></ion-icon></a></li>             
+             <li><a href="">
+              <ion-icon name="logo-twitter"></ion-icon></a></li>             
+             <li><a href="">
+              <ion-icon name="logo-github"></ion-icon></a></li>
+             <li><a href="">
+              <ion-icon name="mail"></ion-icon></a></li>
+           </ul>
+         </div>
+      </div>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+    function MyFunction(divName) {
+      //hidden val
+      var hiddenVal = document.getElementById("tempDivName");
+      //hide old
+      if (hiddenVal.Value != undefined) {
+        var oldDiv = document.getElementById(hiddenVal.Value);
+        oldDiv.style.display = 'none';
+      }
+      //show div
+      var tempDiv = document.getElementById(divName);
+      tempDiv.style.display = 'block';
+      //save div ID
+      hiddenVal.Value = document.getElementById(divName).getAttribute("id");
+    }
+  </script>
+</body>
+</html>

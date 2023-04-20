@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/newStyles.css}">
+    <title>Cruz Azul Animales</title>
+    <!-- Script encargado de  filtrar tablas-->
+    <script type="text/javascript">
+        (function (document) {
+            'use strict';
+
+            var LightTableFilter = (function (Arr) {
+
+                var _input;
+
+                function _onInputEvent(e) {
+                    _input = e.target;
+                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function (table) {
+                        Arr.forEach.call(table.tBodies, function (tbody) {
+                            Arr.forEach.call(tbody.rows, _filter);
+                        });
+                    });
+                }
+
+                function _filter(row) {
+                    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
+
+                return {
+                    init: function () {
+                        var inputs = document.getElementsByClassName('light-table-filter');
+                        Arr.forEach.call(inputs, function (input) {
+                            input.oninput = _onInputEvent;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function () {
+                if (document.readyState === 'complete') {
+                    LightTableFilter.init();
+                }
+            });
+        })(document);
+    </script>
+</head>
+
+<body>
+<div class="page">
+    <nav class="navbar" th:fragment="navBar">
+        <div class="navbar-item"><a href="/inicio">Inicio</a></div>
+        <div class="navbar-item"><a href="/organizacion/registrar">Registrar Organización</a></div>
+        <div class="navbar-item"><a href="/organizacion/listar">Lista de Organizaciones</a></div>
+        <div class="navbar-item"><a href="/logout">Cerrar Sesión</a></div>
+    </nav>
+    <!--<div class="page-body">
+        <section class="sidebar">
+            <div class="sidebar-item">sidebar item 1</div>
+            <div class="sidebar-item">sidebar item 2</div>
+            <div class="sidebar-item">sidebar item 3</div>
+            <div class="sidebar-item">sidebar item 4</div>
+            <div class="sidebar-item">sidebar item 5</div>
+        </section>
+        <section class="columns">
+            <article class="column-item">column item 1</article>
+            <article class="column-item">column item 2</article>
+            <article class="column-item">column item 3</article>
+            <article class="column-item">column item 4</article>
+            <article class="column-item">column item 5</article>
+        </section>
+    </div>-->
+    <footer class="footer" th:fragment="footer">
+        <ul class="social-icon">
+            <li><a href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li><a href="#">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </a></li>
+            <li><a href="#">
+                <ion-icon name="logo-github"></ion-icon>
+            </a></li>
+            <li><a href="#">
+                <ion-icon name="mail"></ion-icon>
+            </a></li>
+        </ul>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    </footer>
+</div>
+
+</body>
+
+</html>
+
+<!--<input placeholder="Buscar"> TABLAS
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>-->

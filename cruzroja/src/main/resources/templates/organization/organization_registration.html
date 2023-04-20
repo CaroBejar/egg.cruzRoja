@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/layout :: head"></head>
+<body>
+
+<div class="page">
+    <nav th:replace="/fragments/layout :: navBar"></nav>
+    <div class="page-body">
+        <!--<section class="sidebar">
+            <div class="sidebar-item">sidebar item 1</div>
+            <div class="sidebar-item">sidebar item 2</div>
+            <div class="sidebar-item">sidebar item 3</div>
+            <div class="sidebar-item">sidebar item 4</div>
+            <div class="sidebar-item">sidebar item 5</div>
+        </section>-->
+
+        <section class="columns register">
+
+            <form th:action="@{/organizacion/registro/}" method="post" class="form" th:object="${organization}">
+                <label>Nombre</label>
+                <input type="text" name="name" class="mas" placeholder="Ingrese el nombre" th:field="*{name}" >
+                <label>Email</label>
+                <input type="email" name="email" class="mas" placeholder="Ingrese el email" th:field="*{email}">
+                <label>Teléfono</label>
+                <input type="number" name="phone" class="mas" placeholder="Ingrese el teléfono" th:field="*{phone}"
+                       ><br>
+                <label>Seleccione un tipo</label>
+                <select name="type" th:field="*{type}" >
+                    <option value="">Seleccione un tipo</option>
+                    <option value="VETERINARIA">Veterinaria</option>
+                    <option value="REFUGIO">Refugio</option>
+                    <option value="CENTRO_AYUDA">Centro de Ayuda</option>
+                </select>
+                <label>Seleccione una provincia</label>
+                    <select name="location" th:field="*{location}">
+                        <option value="">Seleccione una provincia</option>
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="Catamarca">Catamarca</option>
+                        <option value="Córdoba">Córdoba</option>
+                        <option value="Corrientes">Corrientes</option>
+                        <option value="Entre Ríos">Entre Ríos</option>
+                        <option value="Formosa">Formosa</option>
+                        <option value="Jujuy">Jujuy</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="Mendoza">Mendoza</option>
+                        <option value="Misiones">Misiones</option>
+                        <option value="Salta">Salta</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="Santa Fe">Santa Fe</option>
+                        <option value="Santiago el Estero">Santiago el Estero</option>
+                        <option value="Tucumán">Tucumán</option>
+                        <option value="Chaco">Chaco</option>
+                        <option value="Chubut">Chubut</option>
+                        <option value="Neuquén">Neuquén</option>
+                    </select>
+
+                <br>
+                <button type="submit">Registrar</button>
+            </form>
+            <div th:if="${exito != null}" class="card-exito">
+                <h5 class="card-title">Exito</h5>
+                <p class="card-text" th:text="${exito}"></p>
+            </div>
+            <div th:if="${error != null}" class="card-error">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </section>
+    </div>
+    <footer th:replace="/fragments/layout :: footer"></footer>
+</div>
+
+</body>
+
+</html>

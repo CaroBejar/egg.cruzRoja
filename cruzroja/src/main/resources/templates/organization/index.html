@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+<div class="page">
+    <nav class="navbar">
+        <div class="navbar-item"><a href="/login">Iniciar sesión</a></div>
+    </nav>
+    <div class="page-body">
+
+        <section class="columns" th:fragment="noticias">
+
+            <section class="hero">
+                <div class="hero-section">
+                    <div class="hero-section-text">
+                        <h1 id="title">Cruz Azul de Animales</h1>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container">
+
+                <article class="column-item">
+                    <div class="square">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5yijYrrekNXZ-znclONTMXhJ6OmjjledKTQ&usqp=CAU" class="mask">
+                        <div class="h1">Vacunación en caninos</div>
+                        <p>¿Adoptaste un perro? Aquí encontrarás toda la información que necesitás acerca del calendario de vacunación.</p>
+                        <div><a href="https://www.miperroyyo.com.ar/vacunas-perros/" target="_" class="button">Leer más</a></div>
+                    </div>
+                </article>
+
+                <article class="column-item">
+                    <div class="square">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TxN5cpqDtLDqYhLGvM4s3bI2yWDfMO6F9A&usqp=CAU" class="mask">
+                        <div class="h1">Vacunación en felinos</div>
+                        <p>¿Adoptaste un gato? Aquí encontrarás toda la información que necesitás acerca del calendario de vacunación.</p>
+                        <div><a href="https://www.kivet.com/blog/calendario-vacunas-gato/" target="_" class="button">Leer más</a></div>
+                    </div>
+                </article>
+
+                <article class="column-item">
+                    <div class="square">
+                        <img src="https://labyes.com/wp-content/uploads/2017/12/pulgas_1024x683-1024x683.jpg" class="mask">
+                        <div class="h1">Pulgas y garrapatas</div>
+                        <p>¿Porqué es tan importante mantener a tus mascotas libres de estos pequeños invasores? Acá podés informarte de todo acerca de pulgas y garrapatas.</p>
+                        <div><a href="https://labyes.com/pulgas-garrapatas-lo-tienes-saber/" target="_" class="button">Leer más</a></div>
+                    </div>
+                </article>
+
+                <article class="column-item">
+                    <div class="square">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2sVEfzawzhq78UOuNRkEarOQzyrbpgpLYA&usqp=CAU" class="mask">
+                        <div class="h1">Golpe de calor</div>
+                        <p>Ya llega el verano, todo lo que necesitás saber para evitar el golpe de calor en nuestros amigos de cuatro patas.</p>
+                        <div><a href="https://www.purina.es/cuidados/perros/comportamiento/viajar/golpe-calor-perro" target="_" class="button">Leer más</a></div>
+                    </div>
+                </article>
+
+                <article class="column-item">
+                    <div class="square">
+                        <img src="data:image/jpeg;base64,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" class="mask">
+                        <div class="h1">Refugio de Diego</div>
+                        <p>Conocé más de esta asociación civil encargada de ayudar a los animales abandonados.</p>
+                        <div><a href="https://labyes.com/pulgas-garrapatas-lo-tienes-saber/" target="_" class="button">Leer más</a></div>
+                    </div>
+                </article>
+
+                <article class="column-item">
+                    <div class="square">
+                        <img src="https://laciudadavellaneda.com.ar/wp-content/uploads/DSCN4342.jpg" class="mask">
+                        <div class="h1">Centro de Rescate y Rehabilitación de Equinos</div>
+                        <p>Conocé a esta ONG que trabaja día a día en la rehabilitación de equinos maltratados.</p>
+                        <div><a href="https://centrocrre.org/" target="_" class="button">Leer más</a></div>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+    </div>
+
+    <footer th:replace="/fragments/layout :: footer"></footer>
+</div>
+</div>
+
+</body>
+
+</html>

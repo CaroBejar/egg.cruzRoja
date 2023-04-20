@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/styleRegisLog.css}">
+    <title>Document</title>
+</head>
+<body>
+<div class="containerprin">
+    <div class="login">
+        <div class="container">
+            <form th:action="@{/registro/}" method="POST" th:object="${user}" enctype="multipart/form-data">
+                <h1>Ingresar</h1>
+                <input type="text" placeholder="Nombre" name="name" th:field="*{name}">
+                <input type="email" placeholder="Email" name="email" th:field="*{email}">
+                <input type="password" placeholder="Contraseña" name="password" th:field="*{password}">
+                <input type="password" placeholder="Confirmar Contraseña" name="password2">
+                 <input type="file" name="file">
+                <button type="submit">Registrar Usuario</button>
+            </form>
+            <div class="clearfix"></div>
+            <span class="copyright">&copy;2022 | Cruz Azul Animales</span>
+            <br>
+            <div th:if="${exito != null}" class="card-exito">
+                <h5 class="card-title">Exito</h5>
+                <p class="card-text" th:text="${exito}">El usuario se registro correctamente</p>
+            </div>
+            <div th:if="${error != null}" class="card-error">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="register">
+        <div class="container">
+            <i class="fas fa-user-plus fa-5x"></i>
+            <button onclick="location.href='/login'">Volver <i class="fas fa-arrow-circle-right"></i></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

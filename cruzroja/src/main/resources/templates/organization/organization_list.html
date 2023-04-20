@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/layout :: head"></head>
+<body>
+
+<div class="page">
+    <nav th:replace="/fragments/layout :: navBar"></nav>
+    <div class="page-body">
+        <!--<section class="sidebar">
+            <div class="sidebar-item">sidebar item 1</div>
+            <div class="sidebar-item">sidebar item 2</div>
+            <div class="sidebar-item">sidebar item 3</div>
+            <div class="sidebar-item">sidebar item 4</div>
+            <div class="sidebar-item">sidebar item 5</div>
+        </section>-->
+        <section class="columns">
+            <div id="container">
+                <h2>LISTA DE ORGANIZACIONES</h2>
+                <input type="text" class="light-table-filter filter-input" data-table="order-table" placeholder="Buscar...">
+                <table class="order-table">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">TIPO</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">email</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Fecha agregado</th>
+                        <th scope="col">Fecha modificado</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="organization : ${organizationlist}" class="tbody">
+                    <tr>
+                        <td>
+                            <a>
+                                <ion-icon name="paw-outline"></ion-icon>
+                            </a>
+                        </td>
+                        <td th:text="${organization.name}"><strong>CAROL</strong></td>
+                        <td th:text="${organization.type}">aca va el rol</td>
+                        <td th:text="${organization.location}">aca la ubicacion</td>
+                        <td th:text="${organization.email}">esto tendria que ser mas largo email</td>
+                        <td th:text="${organization.phone}">telefono</td>
+                        <td th:text="${organization.uploadDate}"></td>
+                        <td th:text="${organization.modificationDate}"></td>
+                        <td>
+                            <a th:href="@{/organizacion/modificar/__${organization.id}__}">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <footer th:replace="/fragments/layout :: footer"></footer>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,358 @@
+/*
+  set a background. fun!
+*/
+body {
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(193, 209, 222));
+}
+
+
+/*
+  set some variables for spacing, and background colors.
+  make the page a flex container and set the flex-direction to column.
+*/
+.page {
+    --spacing: 0.5rem;
+    --bg-color-dark: rgba(0,0,0,0.1);
+    --bg-color-light: rgba(255,255,255,0.1);
+
+    color: rgba(0,0,0,0.3);
+    font-family: helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+  make all our layout elements flex containers.
+  give them a background color and some padding
+  using the variables we set above
+*/
+.page-body,
+.navbar,
+.navbar-item,
+.sidebar,
+.sidebar-item,
+.columns,
+.column-item,
+.footer {
+    display: flex;
+    background-color: var(--bg-color-dark);
+    padding: var(--spacing);
+}
+
+/*
+  give the page body a height so we have space for our layout
+*/
+.page-body {
+    min-height: calc(100vh - 10rem);
+}
+
+/*
+  give the navbar a height, set to align-items center,
+  and add a bottom margin
+*/
+.navbar {
+    height: 3rem;
+    margin-bottom: var(--spacing);
+    align-items: center;
+    background-color: rgb(0, 113, 189);
+    font-size: 1.2em;
+}
+
+.navbar a{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.navbar a:hover{
+    transition: 0.2s;
+    color: rgb(211, 33, 104);
+    text-decoration: none;
+}
+
+/*
+  set a default width and height on the navbar item.
+  align-items center. use a margin on the right.
+*/
+.navbar-item {
+    width: 10rem;
+    height: calc(100% - calc(var(--spacing) * 2));
+    align-items: center;
+    margin-right: calc(var(--spacing) * 2);
+    background-color: rgb(0, 113, 189);
+}
+
+/*
+  set the margin left to auto,
+  pushing the last item all the way to the right.
+  no more floats!
+  override the margin right.
+*/
+.navbar-item:last-child {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/*
+  use the flex shorthand to make our sidebar grow and shrink
+  flex-direction should be column.
+  override the default padding and set a margin right.
+*/
+.sidebar {
+    flex: 1;
+    padding: 0;
+    flex-direction: column;
+    margin-right: var(--spacing);
+    background: transparent;
+}
+
+/*
+  use the flex shorthand to make the sidebar itens grow and shrink.
+  align-items center. justify content flex end.
+*/
+.sidebar-item {
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/*
+  use the 'even' selector to make a zebra affect. cool!
+*/
+.sidebar-item:nth-child(even) {
+    background-color: var(--bg-color-light);
+}
+
+/*
+  use the flex shorthand to make the columns grow and shrink,
+  taking up 4 times as much space as the sidebar. make the contents wrap.
+  align content flex-start
+*/
+.columns {
+    flex: 4;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+/*
+  make a two column layout by setting the column items default width
+  to 50% of available space, minus margins.
+  set a height. center the content.
+*/
+.column-item {
+    width: calc(100% - calc(var(--spacing) * 4));
+    margin: var(--spacing);
+    height: 20rem;
+}
+
+/*
+  make sure that the last column item is always in the second column
+*/
+.column-item:last-child {
+    margin-left: auto;
+}
+
+/*
+  give the footer a height and top margin.
+  align on the center and have the flow be from right to left.
+*/
+.footer {
+    height: 3rem;
+    margin-top: var(--spacing);
+    align-items: center;
+    flex-direction: row-reverse;
+    background-color: rgb(211, 33, 104);
+}
+.footer .social-icon{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    list-style: none;
+}
+.footer .social-icon li a {
+    font-size: 2em;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+footer .social-icon li a:hover {
+    transform: translateY(-3px);
+}
+/*
+  scale down for smaller screens.
+  switch to single column layout for the articles.
+*/
+@media(max-width: 800px) {
+    :root {
+        font-size: 70%;
+    }
+
+    .column-item {
+        width: 100%;
+    }
+
+    .column-item:last-child {
+        margin: var(--spacing);
+    }
+}
+
+/* TABLA */
+
+#container {
+    width: 100%;
+}
+
+h2{
+    text-align: center;
+    color: #044B92;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td{
+    color: #000000;
+}
+
+td, th {
+    padding: 10px 20px;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    height: 40px;
+    text-align: left;
+    font-size: 20px;
+    background-color: #f8dbe7;
+    color: #d32168;
+    border-bottom: 2px solid #d32168;
+    border-radius: 2px;
+}
+
+
+tr:hover td{
+    background-color: #f8dbe7;
+}
+
+td img {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid #f8dbe7;
+}
+
+td a ion-icon {
+    position: center;
+    color: #d32168;
+}
+
+/* FORMULARIOS */
+
+.form{
+    margin: 0;
+    padding: 15px;
+}
+
+.mas{
+    width:254px;
+    color:#044B92;
+    padding:5px;
+    margin: 10px;
+}
+
+.form input{
+    outline: 0;
+    border: 0;
+}
+
+.form label{
+    color:#044B92;
+    font-weight: bold;
+    display: block;
+    margin-left: 10px;
+}
+
+.form select{
+    display: inline-block;
+    width: 265px;
+    cursor: pointer;
+    padding: 5px;
+    margin: 10px;
+    outline: 0;
+    border: 0;
+    background-color: #fff;
+    color: #044B92;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.register button{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 268px;
+    padding: 5px;
+    border: none;
+    background-color: #D32168;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+.filter-input{
+    font-family: sans-serif;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #000000;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.card-exito{
+    width: 25%;
+    height: 150px;
+    background-color: rgb(75, 255, 75);
+    color: #000;
+    font-family: sans-serif;
+    border-radius: 15px
+}
+
+.card-exito h5{
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.card-exito p{
+    font-size: 1em;
+    text-align: center;
+}
+
+.card-error{
+    width: 25%;
+    height: 150px;
+    background-color: rgb(243, 40, 40);
+    color: #000;
+    font-family: sans-serif;
+    border-radius: 15px
+}
+
+.card-error h5{
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.card-error p{
+    font-size: 1em;
+    text-align: center;
+}
